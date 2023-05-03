@@ -14,9 +14,18 @@
  *          getPromise.then(<Your onFulfilled callback code>)
  */
 
-// Your code goes here
+const getPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('The PROMISE was RESOLVED');
+  }, 1000);
+});
 
+getPromise.then((value) => {
+  console.log(value);
+  return value;
+});
 
+export { getPromise };
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-1"
