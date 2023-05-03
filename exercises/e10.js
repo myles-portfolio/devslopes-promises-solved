@@ -66,7 +66,7 @@ export const result3 = Promise.allSettled(promiseArr)
  * Example: export const newPromiseArr = promiseArr.<method>()...
  */
 
-export const newPromiseArr = val; // Your code here
+export const newPromiseArr = promiseArr.map(p => p.catch(() => null));
 
 // Do NOT refactor or update result 4, it's all set to work
 export const result4 = Promise.race(newPromiseArr)
