@@ -23,8 +23,9 @@ const second = (val) => {
 // Refactor the following code...
 
 export const handlePromise = first()
-  .then((val) => val.find())
-  .then((res) => res[0].save({ key: value }))
+  .then((val) => {
+    return second(val);
+  })
   .then((val) => {
     console.log(val);
     return val;
