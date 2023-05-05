@@ -17,7 +17,7 @@ const promiseArr = [promise1, promise2, promise3, promise4];
  * when promiseArr was passed as the argument
  */
 
-export const result1 = Promise.any(promiseArr)
+export const result1 = Promise.any(promiseArr.map((p) => p.catch((err) => err)))
   .then((value) => {
     console.log(value);
     return value;
@@ -31,10 +31,10 @@ export const result1 = Promise.any(promiseArr)
  * Use a correct PROMISE shortcut that will log and return the resolved value of promise3;
  */
 
-export const result2 = Promise.all(promiseArr)
-  .then((values) => {
-    console.log(values[2]);
-    return values[2];
+export const result2 = Promise.resolve(promise3)
+  .then((value) => {
+    console.log(value);
+    return value;
   })
   .catch((error) => console.log(error));
 
@@ -67,6 +67,9 @@ export const result3 = Promise.allSettled(promiseArr)
  */
 
 export const newPromiseArr = promiseArr.map(p => p.catch(() => null));
+newPromiseArr.push(new Promise(resolve => resolve('RESOLVED AGAIN')));
+
+  
 
 // Do NOT refactor or update result 4, it's all set to work
 export const result4 = Promise.race(newPromiseArr)
